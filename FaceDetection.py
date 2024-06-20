@@ -1,10 +1,8 @@
 import cv2
 import cvzone
-import yolov9.DetectFromImageData as DetectFromImageData
 import sys
 import os
 from pathlib import Path
-from yolov9 import model_util
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # YOLO root directory
@@ -12,10 +10,13 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
-video = r''
-weights=ROOT / 'models/yolov9-c-face.pt'
+from yolov9 import ModelUtil
+import DetectFromImageData as DetectFromImageData
 
-model = model_util.load(weights)
+video = r''
+weights=ROOT / 'model/yolov9-c-face.pt'
+
+model = ModelUtil.load(weights)
 
 # modelPath = 'models\yolov8n-face.pt'
 # modelPath = 'models\yolov9-c-face.pt'
